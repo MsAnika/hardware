@@ -1,0 +1,64 @@
+{
+	"version": 1,
+	"author": "GridMitra",
+	"editor": "wokwi",
+	"parts": [
+		{
+			"type": "board-esp32-devkit-v1",
+			"id": "esp",
+			"top": -10,
+			"left": 0,
+			"attrs": {}
+		},
+		{
+			"type": "wokwi-pushbutton",
+			"id": "button",
+			"top": 30,
+			"left": 260,
+			"attrs": {
+				"color": "green"
+			}
+		},
+		{
+			"type": "wokwi-potentiometer",
+			"id": "voltagePot",
+			"top": 180,
+			"left": 240,
+			"attrs": {
+				"value": "2048"
+			}
+		},
+		{
+			"type": "wokwi-potentiometer",
+			"id": "currentPot",
+			"top": 330,
+			"left": 240,
+			"attrs": {
+				"value": "1024"
+			}
+		},
+		{
+			"type": "wokwi-lcd1602",
+			"id": "lcd",
+			"top": -20,
+			"left": 400,
+			"attrs": {
+				"pins": "i2c"
+			}
+		}
+	],
+	"connections": [
+		["esp:D14", "button:1.l", "green", ["h120"]],
+		["button:2.l", "esp:GND.1", "black", ["v80", "h-180"]],
+		["esp:D34", "voltagePot:SIG", "orange", ["h100", "v120"]],
+		["esp:D35", "currentPot:SIG", "purple", ["h120", "v180"]],
+		["esp:3V3", "voltagePot:VCC", "red", ["h160", "v100"]],
+		["esp:3V3", "currentPot:VCC", "red", ["h180", "v220"]],
+		["esp:GND.2", "voltagePot:GND", "black", ["h140", "v140"]],
+		["esp:GND.2", "currentPot:GND", "black", ["h160", "v260"]],
+		["esp:D21", "lcd:SDA", "blue", ["h220", "v20"]],
+		["esp:D22", "lcd:SCL", "yellow", ["h240", "v40"]],
+		["esp:3V3", "lcd:VCC", "red", ["h200", "v60"]],
+		["esp:GND.1", "lcd:GND", "black", ["h180", "v80"]]
+	]
+}
